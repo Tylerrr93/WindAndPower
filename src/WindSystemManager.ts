@@ -13,6 +13,8 @@ export default class WindSystemManager {
     //Updater for wind speeds and states
     @EventHandler(EventBus.Players, "tickStart")
     public checkForWindUpdates() {
+
+        console.log("WindSystemManager: checkForWindUpdates");
         // How often in ticks the wind speed will update
         const tickInterval = 10;
         const currentTick = game.time.ticks;

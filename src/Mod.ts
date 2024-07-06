@@ -1,6 +1,6 @@
 import Mod from "@wayward/game/mod/Mod";
 import { IWindData, WINDANDPOWER_NAME } from "./IWindData";
-import { EventHandler } from "@wayward/game/event/EventManager";
+import { EventHandler, eventManager } from "@wayward/game/event/EventManager";
 import GameScreen from "@wayward/game/ui/screen/screens/GameScreen";
 import { MessageType } from "@wayward/game/game/entity/player/IMessageManager";
 import Message from "@wayward/game/language/dictionary/Message";
@@ -25,10 +25,16 @@ export default class WindAndPowerMod extends Mod {
     @Mod.instance(WINDANDPOWER_NAME)
     public static readonly WINDANDPOWERMOD: WindAndPowerMod;
 
-    @Register.registry(WindSystemManager)
-    public readonly windEventHandlers: WindSystemManager;
+    //Declare the WindSystemManager and make sure to register and unregister it on game start and close
+    public readonly windManager = new WindSystemManager();
+    public override onLoad(): void {
+        eventManager.registerEventBusSubscriber(this.windManager);
+    }
+    public override onUnload(): void {
+        eventManager.deregisterEventBusSubscriber(this.windManager);
+    }
 
-    ///////////
+    /////////// 
     //Messages
 
     @Register.message("MsgDebugOne")
