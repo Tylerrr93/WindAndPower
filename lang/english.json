@@ -1,0 +1,13 @@
+{
+    "extends": "English",
+    "dictionaries": {
+
+        "message": {
+
+            "modWindAndPowerMsgDebugOne": "Wind and Power mod enabled:",
+            
+            "modWindAndPowerMsgDebugTwo": "The worlds current wind speed is {0}!"
+
+        }
+    }
+}

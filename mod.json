@@ -1,0 +1,18 @@
+{
+	"name": "WindAndPower",
+	"description": "Adds wind and mechanical power to the game",
+	"version": "1.0.0",
+	"author": "TTastic",
+	"file": "out/Mod",
+	"waywardVersion": "2.14.0-beta",
+	"languages": [
+		"lang/English"
+	],
+	"tags": [
+		"Item",
+		"Doodad"
+	],
+	"multiplayer": "compatible",
+	"unloadable": true,
+	"allowUnlockingMilestones": true
+}
