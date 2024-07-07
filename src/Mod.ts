@@ -1,13 +1,16 @@
 import Mod from "@wayward/game/mod/Mod";
-import { IWindData, WINDANDPOWER_NAME } from "./IWindData";
+import { IWindData, WINDANDPOWER_NAME } from "./windsystem/IWindData";
 import { EventHandler, eventManager } from "@wayward/game/event/EventManager";
 import GameScreen from "@wayward/game/ui/screen/screens/GameScreen";
 import { MessageType } from "@wayward/game/game/entity/player/IMessageManager";
 import Message from "@wayward/game/language/dictionary/Message";
 import Register from "@wayward/game/mod/ModRegistry";
-import WindSystemManager from "./WindSystemManager";
+import WindSystemManager from "./windsystem/WindSystemManager";
 
 export default class WindAndPowerMod extends Mod {
+
+    @Mod.instance(WINDANDPOWER_NAME)
+    public static readonly WINDANDPOWERMOD: WindAndPowerMod;
 
     //Save data for storing the worlds wind speed
     @Mod.saveData<WindAndPowerMod>()
@@ -22,9 +25,6 @@ export default class WindAndPowerMod extends Mod {
         };
     }
 
-    @Mod.instance(WINDANDPOWER_NAME)
-    public static readonly WINDANDPOWERMOD: WindAndPowerMod;
-
     //Declare the WindSystemManager and make sure to register and unregister it on game start and close
     public readonly windManager = new WindSystemManager();
     public override onLoad(): void {
@@ -33,6 +33,8 @@ export default class WindAndPowerMod extends Mod {
     public override onUnload(): void {
         eventManager.deregisterEventBusSubscriber(this.windManager);
     }
+
+    
 
     /////////// 
     //Messages
