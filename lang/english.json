@@ -4,10 +4,21 @@
 
         "message": {
 
+            "modWindAndPowerMsgAnemometerCheckWind": "You hold out the anemometer and determine that the wind right now is {0}.",
+            
+            "modWindAndPowerMsgAnemometerCheckWindAdvanced": "Because of your advanced skill in tinkering, you determine that the wind is {0} and that its speed is {1}.",
+
             "modWindAndPowerMsgDebugOne": "Wind and Power mod enabled:",
             
             "modWindAndPowerMsgDebugTwo": "The worlds current wind speed is {0}!"
 
-        }
+        },
+
+        "item": {
+
+			"modWindAndPowerAnemometer": ["Anemometer", "A primitive version of a device used to measure the wind."]
+
+		}
+
     }
 }

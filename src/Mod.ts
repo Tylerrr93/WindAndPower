@@ -6,6 +6,10 @@ import { MessageType } from "@wayward/game/game/entity/player/IMessageManager";
 import Message from "@wayward/game/language/dictionary/Message";
 import Register from "@wayward/game/mod/ModRegistry";
 import WindSystemManager from "./windsystem/WindSystemManager";
+import WAPToolItemsRegistry from "./items/WAPToolItemsRegistry";
+import AnemometerCheckWind from "./actions/AnemometerCheckWind";
+import { ActionType } from "@wayward/game/game/entity/action/IAction";
+import WAPMessagesRegistry from "./messages/WAPMessagesRegistry";
 
 export default class WindAndPowerMod extends Mod {
 
@@ -21,7 +25,7 @@ export default class WindAndPowerMod extends Mod {
         return data ?? {
             windSpeed: 0,
             windState: "calm",
-            windStateTimer: 10
+            windStateTimer: 5
         };
     }
 
@@ -34,18 +38,36 @@ export default class WindAndPowerMod extends Mod {
         eventManager.deregisterEventBusSubscriber(this.windManager);
     }
 
-    
+    //////////////
+    //Registries
+    //////////////
 
-    /////////// 
+    //WAP Tool Items
+    @Register.registry(WAPToolItemsRegistry)
+    public readonly wapItemsTools: WAPToolItemsRegistry;
+
     //Messages
+    @Register.registry(WAPMessagesRegistry)
+    public readonly messages: WAPMessagesRegistry;
 
+    ///////////
+    //Actions
+    ///////////
+    
+    @Register.action("AnemometerCheckWind", AnemometerCheckWind)
+    public readonly actionAnemometerCheckWind: ActionType;
+
+
+
+
+    //////////////////
+    //Debug Messages
+    //////////////////
     @Register.message("MsgDebugOne")
 	public readonly MsgDebugOne: Message;
-
     @Register.message("MsgDebugTwo") 
     public readonly MsgDebugTwo: Message;
 
-    //Debug messages
 	@EventHandler(GameScreen, "show")
 	public onGameScreenVisible() {
         let windSpeed = this.data.windSpeed;
