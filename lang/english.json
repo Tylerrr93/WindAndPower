@@ -8,6 +8,10 @@
             
             "modWindAndPowerMsgAnemometerCheckWindAdvanced": "Because of your advanced skill in tinkering, you determine that the wind is {0} and that its speed is {1}.",
 
+            "modWindAndPowerMsgAnemometerCheckWindMaster": "Your masterful skill in tinkering allows you to determine that the wind is {0} with a speed of {1}. {2}",
+
+            "modWindAndPowerMsgCantCheckInCave": "There is no wind to check in a cave!",
+
             "modWindAndPowerMsgDebugOne": "Wind and Power mod enabled:",
             
             "modWindAndPowerMsgDebugTwo": "The worlds current wind speed is {0}!"
@@ -16,8 +20,12 @@
 
         "item": {
 
-			"modWindAndPowerAnemometer": ["Anemometer", "A primitive version of a device used to measure the wind."]
+			"modWindAndPowerAnemometer": ["anemometer", "A primitive version of a device used to measure the wind."]
 
+		},
+
+        "action": {
+			"modWindAndPowerAnemometerCheckWind": ["Check wind", "Use your anemometer to check the wind speed!"]
 		}
 
     }

@@ -1,11 +1,12 @@
-import Register from "@wayward/game/mod/ModRegistry";
+import Register, { Registry } from "@wayward/game/mod/ModRegistry";
 import { EquipType, SkillType } from "@wayward/game/game/entity/IHuman";
 import { ItemType, ItemTypeGroup, RecipeLevel } from "@wayward/game/game/item/IItem";
 import { DamageType } from "@wayward/game/game/entity/IEntity";
 import { RecipeComponent } from "@wayward/game/game/item/ItemDescriptions";
 import { Deity } from "@wayward/game/game/deity/Deity";
 import { BiomeType } from "@wayward/game/game/biome/IBiome";
-import { ActionType } from "@wayward/game/game/entity/action/IAction";
+import WindAndPowerMod from "../Mod";
+import { WINDANDPOWER_NAME } from "../windsystem/IWindData";
 
 export default class WAPToolItemsRegistry {
 
@@ -14,7 +15,7 @@ export default class WAPToolItemsRegistry {
         equip: EquipType.Held,
         attack: 1,
         damageType: DamageType.Blunt,
-        use: [ActionType.Chop],
+        use: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).get("actionAnemometerCheckWind")],
         recipe: {
             components: [
                 RecipeComponent(ItemType.WoodenPole, 1, 1, 1),
@@ -31,7 +32,7 @@ export default class WAPToolItemsRegistry {
         flammable: true,
         worth: 60,
         spawnOnMerchant: [BiomeType.Random],
-        group: [ItemTypeGroup.Tool, ItemTypeGroup.Weapon, ItemTypeGroup.DualWield ]
+        group: [ItemTypeGroup.Tool]
     })
     public itemAnemometer: ItemType; 
 
