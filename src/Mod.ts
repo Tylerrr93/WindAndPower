@@ -10,6 +10,7 @@ import WAPToolItemsRegistry from "./items/WAPToolItemsRegistry";
 import AnemometerCheckWind from "./actions/AnemometerCheckWind";
 import { ActionType } from "@wayward/game/game/entity/action/IAction";
 import WAPMessagesRegistry from "./messages/WAPMessagesRegistry";
+import WAPWindmillDoodad from "./doodads/WAPWindmillDoodad";
 
 export default class WindAndPowerMod extends Mod {
 
@@ -45,6 +46,10 @@ export default class WindAndPowerMod extends Mod {
     //WAP Tool Items
     @Register.registry(WAPToolItemsRegistry)
     public readonly wapItemsTools: WAPToolItemsRegistry;
+
+    //WAP Windmill
+    @Register.registry(WAPWindmillDoodad)
+    public readonly wapDoodadsWindmill: WAPWindmillDoodad;
 
     //Messages
     @Register.registry(WAPMessagesRegistry)

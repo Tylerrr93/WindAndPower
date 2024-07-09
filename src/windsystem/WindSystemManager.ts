@@ -15,7 +15,7 @@ export default class WindSystemManager {
     //Wind speed ranges by state
     private static readonly CALM_RANGE = { min: 0, max: 1 };
     private static readonly AVERAGE_RANGE = { min: 2, max: 5 };
-    private static readonly WINDY_RANGE = { min: 6, max: 8 };
+    private static readonly HIGH_RANGE = { min: 6, max: 8 };
     private static readonly EXTREME_RANGE = { min: 9, max: 10 };
 
     //Amount of wind updates each type of wind speed can last
@@ -23,15 +23,15 @@ export default class WindSystemManager {
     private static readonly MAX_CALM_TIMER = 15;
     private static readonly MIN_AVERAGE_TIMER = 5;
     private static readonly MAX_AVERAGE_TIMER = 15;
-    private static readonly MIN_WINDY_TIMER = 5;
-    private static readonly MAX_WINDY_TIMER = 15;
+    private static readonly MIN_HIGH_TIMER = 5;
+    private static readonly MAX_HIGH_TIMER = 15;
     private static readonly MIN_EXTREME_TIMER = 5;
     private static readonly MAX_EXTREME_TIMER = 15;
 
     //Chances should add up to 1, remainder is chance for extreme weather
     private static readonly CALM_PROBABILITY = 0.12;
     private static readonly AVERAGE_PROBABILITY = 0.8;
-    private static readonly WINDY_PROBABILITY = 0.07;
+    private static readonly HIGH_PROBABILITY = 0.07;
 
     //Updater for wind speeds and states
     @EventHandler(EventBus.Players, "tickStart")
@@ -57,8 +57,8 @@ export default class WindSystemManager {
                 WindAndPowerMod.WINDANDPOWERMOD.data.windState = "calm";
             } else if (randomValue < WindSystemManager.CALM_PROBABILITY + WindSystemManager.AVERAGE_PROBABILITY) {
                 WindAndPowerMod.WINDANDPOWERMOD.data.windState = "average";
-            } else if (randomValue < WindSystemManager.CALM_PROBABILITY + WindSystemManager.AVERAGE_PROBABILITY + WindSystemManager.WINDY_PROBABILITY) {
-                WindAndPowerMod.WINDANDPOWERMOD.data.windState = "windy";
+            } else if (randomValue < WindSystemManager.CALM_PROBABILITY + WindSystemManager.AVERAGE_PROBABILITY + WindSystemManager.HIGH_PROBABILITY) {
+                WindAndPowerMod.WINDANDPOWERMOD.data.windState = "high";
             } else {
                 WindAndPowerMod.WINDANDPOWERMOD.data.windState = "extreme";
             }
@@ -73,7 +73,7 @@ export default class WindSystemManager {
     /**
      * Sets the wind state timer based on the current wind state.
      * The timer is a random value within a predefined range for each wind state.
-     * @param {string} windState - The current wind state ("calm", "average", "windy", or "extreme").
+     * @param {string} windState - The current wind state ("calm", "average", "high", or "extreme").
      */
     private setWindStateTimer(windState: string) {
         switch (windState) {
@@ -83,8 +83,8 @@ export default class WindSystemManager {
             case "average":
                 WindAndPowerMod.WINDANDPOWERMOD.data.windStateTimer = Math.floor(Math.random() * (WindSystemManager.MAX_AVERAGE_TIMER - WindSystemManager.MIN_AVERAGE_TIMER + 1)) + WindSystemManager.MIN_AVERAGE_TIMER;
                 break;
-            case "windy":
-                WindAndPowerMod.WINDANDPOWERMOD.data.windStateTimer = Math.floor(Math.random() * (WindSystemManager.MAX_WINDY_TIMER - WindSystemManager.MIN_WINDY_TIMER + 1)) + WindSystemManager.MIN_WINDY_TIMER;
+            case "high":
+                WindAndPowerMod.WINDANDPOWERMOD.data.windStateTimer = Math.floor(Math.random() * (WindSystemManager.MAX_HIGH_TIMER - WindSystemManager.MIN_HIGH_TIMER + 1)) + WindSystemManager.MIN_HIGH_TIMER;
                 break;
             case "extreme":
                 WindAndPowerMod.WINDANDPOWERMOD.data.windStateTimer = Math.floor(Math.random() * (WindSystemManager.MAX_EXTREME_TIMER - WindSystemManager.MIN_EXTREME_TIMER + 1)) + WindSystemManager.MIN_EXTREME_TIMER;
@@ -104,8 +104,8 @@ export default class WindSystemManager {
             case "average":
                 WindAndPowerMod.WINDANDPOWERMOD.data.windSpeed = Math.floor(Math.random() * (WindSystemManager.AVERAGE_RANGE.max - WindSystemManager.AVERAGE_RANGE.min + 1)) + WindSystemManager.AVERAGE_RANGE.min;
                 break;
-            case "windy":
-                WindAndPowerMod.WINDANDPOWERMOD.data.windSpeed = Math.floor(Math.random() * (WindSystemManager.WINDY_RANGE.max - WindSystemManager.WINDY_RANGE.min + 1)) + WindSystemManager.WINDY_RANGE.min;
+            case "high":
+                WindAndPowerMod.WINDANDPOWERMOD.data.windSpeed = Math.floor(Math.random() * (WindSystemManager.HIGH_RANGE.max - WindSystemManager.HIGH_RANGE.min + 1)) + WindSystemManager.HIGH_RANGE.min;
                 break;
             case "extreme":
                 WindAndPowerMod.WINDANDPOWERMOD.data.windSpeed = Math.floor(Math.random() * (WindSystemManager.EXTREME_RANGE.max - WindSystemManager.EXTREME_RANGE.min + 1)) + WindSystemManager.EXTREME_RANGE.min;

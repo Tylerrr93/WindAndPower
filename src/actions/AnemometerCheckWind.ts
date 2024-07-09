@@ -1,4 +1,4 @@
-import { ActionArgument } from "@wayward/game/game/entity/action/IAction";
+import { ActionArgument, ActionType } from "@wayward/game/game/entity/action/IAction";
 import { Action } from "@wayward/game/game/entity/action/Action";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
 import WindAndPowerMod from "../Mod";
@@ -51,5 +51,7 @@ export default new Action(ActionArgument.ItemInventory)
             console.log("Basic message filler");
             player.messages.type(MessageType.Skill).send(WindAndPowerMod.WINDANDPOWERMOD.messages.MsgAnemometerCheckWind, windState);
         }
+
+        item.damage(ActionType[action.type]);
 
     })

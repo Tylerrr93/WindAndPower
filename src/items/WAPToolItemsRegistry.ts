@@ -30,7 +30,7 @@ export default class WAPToolItemsRegistry {
         },
         storeDisassemblyItems: true,
         flammable: true,
-        worth: 60,
+        worth: 20,
         spawnOnMerchant: [BiomeType.Random],
         group: [ItemTypeGroup.Tool]
     })
