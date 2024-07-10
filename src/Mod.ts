@@ -11,6 +11,7 @@ import AnemometerCheckWind from "./actions/AnemometerCheckWind";
 import { ActionType } from "@wayward/game/game/entity/action/IAction";
 import WAPMessagesRegistry from "./messages/WAPMessagesRegistry";
 import WAPWindmillDoodad from "./doodads/WAPWindmillDoodad";
+import WindmillManager from "./windsystem/WindmillManager";
 
 export default class WindAndPowerMod extends Mod {
 
@@ -30,13 +31,16 @@ export default class WindAndPowerMod extends Mod {
         };
     }
 
-    //Declare the WindSystemManager and make sure to register and unregister it on game start and close
+    //Load and unload the wind managers when the save is loaded and unloaded
     public readonly windManager = new WindSystemManager();
+    public readonly WindmillManager = new WindmillManager();
     public override onLoad(): void {
         eventManager.registerEventBusSubscriber(this.windManager);
+        eventManager.registerEventBusSubscriber(this.WindmillManager);
     }
     public override onUnload(): void {
         eventManager.deregisterEventBusSubscriber(this.windManager);
+        eventManager.deregisterEventBusSubscriber(this.WindmillManager);
     }
 
     //////////////
@@ -61,9 +65,6 @@ export default class WindAndPowerMod extends Mod {
     
     @Register.action("AnemometerCheckWind", AnemometerCheckWind)
     public readonly actionAnemometerCheckWind: ActionType;
-
-
-
 
     //////////////////
     //Debug Messages

@@ -1,4 +1,4 @@
-import { ActionArgument, ActionType } from "@wayward/game/game/entity/action/IAction";
+import { ActionArgument } from "@wayward/game/game/entity/action/IAction";
 import { Action } from "@wayward/game/game/entity/action/Action";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
 import WindAndPowerMod from "../Mod";
@@ -20,6 +20,8 @@ export default new Action(ActionArgument.ItemInventory)
             };
         }
     })
+    //Adds in the anemometer to items used (damage, break, break warning etc)
+    .setPreExecutionHandler((action, item) => action.addItems(item))
     .setHandler((action, item) => {
         let player = action.executor;
         let skillLevel = localPlayer.skill.get(SkillType.Tinkering);
@@ -52,6 +54,7 @@ export default new Action(ActionArgument.ItemInventory)
             player.messages.type(MessageType.Skill).send(WindAndPowerMod.WINDANDPOWERMOD.messages.MsgAnemometerCheckWind, windState);
         }
 
-        item.damage(ActionType[action.type]);
+        //Damages items used and makes sure to have break warnings etc
+        action.setItemsUsed();
 
     })

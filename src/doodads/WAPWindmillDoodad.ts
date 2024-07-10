@@ -1,6 +1,5 @@
 import Register from "@wayward/game/mod/ModRegistry";
 import { DoodadType } from "@wayward/game/game/doodad/IDoodad";
-
 export default class WAPWindmillDoodad {
 
     @Register.doodad("WoodenWindmill", {
@@ -17,5 +16,10 @@ export default class WAPWindmillDoodad {
         
     })
     public doodadWoodenWindmill: DoodadType;
+
+    @Register.doodad("WoodenAxleHorizontal", {
+        canBreak: true
+    })
+    public doodadWoodenAxleHorizontal: DoodadType;
 
 }
