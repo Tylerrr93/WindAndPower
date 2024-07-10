@@ -1,5 +1,5 @@
 import Mod from "@wayward/game/mod/Mod";
-import { IWindData, IWindmillData, WINDANDPOWER_NAME } from "./windsystem/IWindData";
+import { IWindData, WINDANDPOWER_NAME } from "./windsystem/IWindData";
 import { EventHandler, eventManager } from "@wayward/game/event/EventManager";
 import GameScreen from "@wayward/game/ui/screen/screens/GameScreen";
 import { MessageType } from "@wayward/game/game/entity/player/IMessageManager";
@@ -27,7 +27,8 @@ export default class WindAndPowerMod extends Mod {
         return data ?? {
             windSpeed: 0,
             windState: "calm",
-            windStateTimer: 5
+            windStateTimer: 1,
+            windmills: {}
         };
     }
 

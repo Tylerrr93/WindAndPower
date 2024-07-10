@@ -1,4 +1,5 @@
-import { ReferenceType } from "@wayward/game/game/reference/IReferenceManager";
+import { Reference, ReferenceType } from "@wayward/game/game/reference/IReferenceManager";
+import { IslandId } from "@wayward/game/game/island/IIsland";
 
 export const WINDANDPOWER_NAME = "Wind And Power"
 
@@ -6,8 +7,5 @@ export interface IWindData {
     windSpeed: number;
     windState: string;
     windStateTimer: number;
-}
-
-export interface IWindmillData {
-    reference: ReferenceType
+    windmills: PartialRecord<IslandId, Reference<ReferenceType.Doodad>[]>;
 }
