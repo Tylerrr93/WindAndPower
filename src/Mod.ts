@@ -72,15 +72,12 @@ export default class WindAndPowerMod extends Mod {
     //////////////////
     @Register.message("MsgDebugOne")
 	public readonly MsgDebugOne: Message;
-    @Register.message("MsgDebugTwo") 
-    public readonly MsgDebugTwo: Message;
 
 	@EventHandler(GameScreen, "show")
 	public onGameScreenVisible() {
         let windSpeed = this.data.windSpeed;
-		localPlayer.messages.type(MessageType.Good).send(this.MsgDebugOne);
-        localPlayer.messages.type(MessageType.Good).send(this.MsgDebugTwo, windSpeed);
+		localPlayer.messages.type(MessageType.Good).send(this.MsgDebugOne, windSpeed);
 	}
 
-} 
+}  
 

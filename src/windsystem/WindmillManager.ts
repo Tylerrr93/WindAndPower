@@ -16,7 +16,7 @@ export default class WindmillManager {
      * @param options - The island tick options.
      */
     @EventHandler(EventBus.Island, "tickStart")
-    public onTickEndUpdateWindmillVariables(island: Island, options: IIslandTickOptions) {
+    public onTickStartUpdateWindmillVariables(island: Island, options: IIslandTickOptions) {
         const windSpeed = WindAndPowerMod.WINDANDPOWERMOD.data.windSpeed;
         const windmillsData = WindAndPowerMod.WINDANDPOWERMOD.data.windmills;
         const islandId = island.id;
