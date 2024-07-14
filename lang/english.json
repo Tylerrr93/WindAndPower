@@ -25,7 +25,9 @@
         "doodad": {
 
 			"modWindAndPowerWoodenWindmill": "wooden windmill",
-            "modWindAndPowerWoodenAxleHorizontal": "wooden axle"
+            "modWindAndPowerWoodenGearbox": "wooden gearbox",
+            "modWindAndPowerWoodenAxleHorizontalPowered": "powered wooden axle",
+            "modWindAndPowerWoodenAxleVerticalPowered": "powered wooden axle"
 
 		},
 

@@ -17,9 +17,21 @@ export default class WAPWindmillDoodad {
     })
     public doodadWoodenWindmill: DoodadType;
 
-    @Register.doodad("WoodenAxleHorizontal", {
-        canBreak: true
+    @Register.doodad("WoodenGearbox", {
+        canBreak: true,
+        isAnimated: true
     })
-    public doodadWoodenAxleHorizontal: DoodadType;
+
+    @Register.doodad("WoodenAxleHorizontalPowered", {
+        canBreak: true,
+        isAnimated: true
+    })
+    public doodadWoodenAxleHorizontalPowered: DoodadType;
+
+    @Register.doodad("WoodenAxleVerticalPowered", {
+        canBreak: true,
+        isAnimated: true
+    })
+    public doodadWoodenAxleVerticalPowered: DoodadType;
 
 }
