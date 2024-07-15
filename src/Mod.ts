@@ -10,8 +10,10 @@ import WAPToolItemsRegistry from "./items/WAPToolItemsRegistry";
 import AnemometerCheckWind from "./actions/AnemometerCheckWind";
 import { ActionType } from "@wayward/game/game/entity/action/IAction";
 import WAPMessagesRegistry from "./messages/WAPMessagesRegistry";
-import WAPWindmillDoodad from "./doodads/WAPWindmillDoodad";
 import WindmillManager from "./windsystem/WindmillManager";
+import WAPWindmillItems from "./items/WAPWindmillItems";
+import WAPWindmillDoodads from "./doodads/WAPWindmillDoodad";
+import PlaceWoodenAxle from "./actions/PlaceWoodenAxle";
 
 export default class WindAndPowerMod extends Mod {
 
@@ -34,14 +36,14 @@ export default class WindAndPowerMod extends Mod {
 
     //Load and unload the wind managers when the save is loaded and unloaded
     public readonly windManager = new WindSystemManager();
-    public readonly WindmillManager = new WindmillManager();
+    public readonly windmillManager = new WindmillManager();
     public override onLoad(): void {
         eventManager.registerEventBusSubscriber(this.windManager);
-        eventManager.registerEventBusSubscriber(this.WindmillManager);
+        eventManager.registerEventBusSubscriber(this.windmillManager);
     }
     public override onUnload(): void {
         eventManager.deregisterEventBusSubscriber(this.windManager);
-        eventManager.deregisterEventBusSubscriber(this.WindmillManager);
+        eventManager.deregisterEventBusSubscriber(this.windmillManager);
     }
 
     //////////////
@@ -52,9 +54,13 @@ export default class WindAndPowerMod extends Mod {
     @Register.registry(WAPToolItemsRegistry)
     public readonly wapItemsTools: WAPToolItemsRegistry;
 
-    //WAP Windmill
-    @Register.registry(WAPWindmillDoodad)
-    public readonly wapDoodadsWindmill: WAPWindmillDoodad;
+    //WAP Windmill doodads
+    @Register.registry(WAPWindmillDoodads)
+    public readonly wapDoodadsWindmill: WAPWindmillDoodads;
+
+    //WAP Windmill items
+    @Register.registry(WAPWindmillItems)
+    public readonly wapItemsWindmill: WAPWindmillItems;
 
     //Messages
     @Register.registry(WAPMessagesRegistry)
@@ -66,6 +72,9 @@ export default class WindAndPowerMod extends Mod {
     
     @Register.action("AnemometerCheckWind", AnemometerCheckWind)
     public readonly actionAnemometerCheckWind: ActionType;
+
+    @Register.action("PlaceWoodenAxle", PlaceWoodenAxle)
+    public readonly actionPlaceWoodenAxle: ActionType;
 
     //////////////////
     //Debug Messages

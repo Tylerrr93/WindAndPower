@@ -18,7 +18,8 @@
 
         "item": {
 
-			"modWindAndPowerAnemometer": ["anemometer", "A primitive version of a device used to measure the wind."]
+			"modWindAndPowerAnemometer": ["anemometer", "A primitive version of a device used to measure the wind."],
+            "modWindAndPowerWoodenAxle": ["wooden axle", "A primitive axle that can be installed horizontally or vertically."]
 
 		},
 
@@ -26,13 +27,17 @@
 
 			"modWindAndPowerWoodenWindmill": "wooden windmill",
             "modWindAndPowerWoodenGearbox": "wooden gearbox",
-            "modWindAndPowerWoodenAxleHorizontalPowered": "powered wooden axle",
-            "modWindAndPowerWoodenAxleVerticalPowered": "powered wooden axle"
+            "modWindAndPowerWoodenGearboxPowered": "powered wooden gearbox",
+            "modWindAndPowerWoodenAxleHorizontal": "wooden mill axle",
+            "modWindAndPowerWoodenAxleHorizontalPowered": "powered wooden mill axle",
+            "modWindAndPowerWoodenAxleVertical": "wooden mill axle",
+            "modWindAndPowerWoodenAxleVerticalPowered": "powered wooden mill axle"
 
 		},
 
         "action": {
-			"modWindAndPowerAnemometerCheckWind": ["Check wind", "Use your anemometer to check the wind speed!"]
+			"modWindAndPowerAnemometerCheckWind": ["Check wind", "Use your anemometer to check the wind speed!"],
+            "modWindAndPowerPlaceWoodenAxle": ["Install axle", "Mount a wooden axle on the ground"]
 		}
 
     }
