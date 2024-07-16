@@ -1,5 +1,10 @@
-import Register from "@wayward/game/mod/ModRegistry";
+import Register, { Registry } from "@wayward/game/mod/ModRegistry";
 import { DoodadType } from "@wayward/game/game/doodad/IDoodad";
+import WindAndPowerMod from "../Mod";
+import { WINDANDPOWER_NAME } from "../windsystem/IWindData";
+
+
+
 export default class WAPWindmillDoodads {
 
     @Register.doodad("WoodenWindmill", {
@@ -21,13 +26,15 @@ export default class WAPWindmillDoodads {
 
     @Register.doodad("WoodenGearbox", {
         canBreak: true,
-        isAnimated: false
+        isAnimated: false,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenGearbox: DoodadType;
 
     @Register.doodad("WoodenGearboxPowered", {
         canBreak: true,
-        isAnimated: true
+        isAnimated: true,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenGearboxPowered: DoodadType;
 
@@ -35,13 +42,15 @@ export default class WAPWindmillDoodads {
 
     @Register.doodad("WoodenAxleHorizontal", {
         canBreak: true,
-        isAnimated: false
+        isAnimated: false,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenAxleHorizontal: DoodadType;
 
     @Register.doodad("WoodenAxleHorizontalPowered", {
         canBreak: true,
-        isAnimated: true
+        isAnimated: true,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenAxleHorizontalPowered: DoodadType;
 
@@ -49,13 +58,15 @@ export default class WAPWindmillDoodads {
 
     @Register.doodad("WoodenAxleVertical", {
         canBreak: true,
-        isAnimated: false
+        isAnimated: false,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenAxleVertical: DoodadType;
 
     @Register.doodad("WoodenAxleVerticalPowered", {
         canBreak: true,
-        isAnimated: true
+        isAnimated: true,
+        pickUp: [Registry<WindAndPowerMod>(WINDANDPOWER_NAME).registry("wapItemsWindmill").get("itemWoodenAxle")]
     })
     public doodadWoodenAxleVerticalPowered: DoodadType;
 

@@ -52,6 +52,10 @@ export default new Action(ActionArgument.ItemInventory)
             function updateDoodad(tile: Tile | undefined) {
                 if (!tile || !tile.doodad) return;
 
+                if (tile.doodad.type === WindAndPowerMod.WINDANDPOWERMOD.wapDoodadsWindmill.doodadWoodenWindmill) {
+                    return;
+                }
+
                 let northTile = tile.getTileInDirection(Direction.North);
                 let southTile = tile.getTileInDirection(Direction.South);
                 let eastTile = tile.getTileInDirection(Direction.East);
@@ -72,7 +76,24 @@ export default new Action(ActionArgument.ItemInventory)
                 }
 
                 if (tile.doodad.type !== newDoodadType) {
+                    //Remove original axle reference before changing/updating
+                    let islandId = player.island.id;
+                    const axlesSaveData = WindAndPowerMod.WINDANDPOWERMOD.data.axles[islandId];
+                    // Return if there are no axles on the island
+                    if (!axlesSaveData) {
+                        return;
+                    }
+                    const doodadReference = game.references.get(tile.doodad);
+                    const referenceToRemove = axlesSaveData.find(ref => ref[0] === doodadReference?.[0]); // [0] is the static id of the reference
+                    if (referenceToRemove) {
+                        const index = axlesSaveData.indexOf(referenceToRemove);
+                        axlesSaveData.splice(index, 1);
+                        console.log("Removing following axle reference via updating axle type:" + referenceToRemove);
+                        console.log("Removed axle from island via updating axle type, island windmills: " + WindAndPowerMod.WINDANDPOWERMOD.data.windmills[islandId]);
+                    }
+                    //Remove old axle doodad
                     player.island.doodads.remove(tile.doodad);
+                    //Axle manager should now add new axle reference
                     player.island.doodads.create(newDoodadType, tile, {}, player);
                 }
             }
@@ -104,9 +125,8 @@ export default new Action(ActionArgument.ItemInventory)
             updateDoodad(eastTile);
             updateDoodad(westTile);
 
+            //Clean up
             player.island.items.remove(item); 
-
             renderers.updateView(undefined, RenderSource.Mod, true);
-
             player.passTurn();
     })

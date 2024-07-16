@@ -14,6 +14,7 @@ import WindmillManager from "./windsystem/WindmillManager";
 import WAPWindmillItems from "./items/WAPWindmillItems";
 import WAPWindmillDoodads from "./doodads/WAPWindmillDoodad";
 import PlaceWoodenAxle from "./actions/PlaceWoodenAxle";
+import AxleManager from "./windsystem/AxleManager";
 
 export default class WindAndPowerMod extends Mod {
 
@@ -30,20 +31,24 @@ export default class WindAndPowerMod extends Mod {
             windSpeed: 0,
             windState: "calm",
             windStateTimer: 1,
-            windmills: {}
+            windmills: {},
+            axles: {}
         };
     }
 
     //Load and unload the wind managers when the save is loaded and unloaded
     public readonly windManager = new WindSystemManager();
     public readonly windmillManager = new WindmillManager();
+    public readonly axleManager = new AxleManager();
     public override onLoad(): void {
         eventManager.registerEventBusSubscriber(this.windManager);
         eventManager.registerEventBusSubscriber(this.windmillManager);
+        eventManager.registerEventBusSubscriber(this.axleManager);
     }
     public override onUnload(): void {
         eventManager.deregisterEventBusSubscriber(this.windManager);
         eventManager.deregisterEventBusSubscriber(this.windmillManager);
+        eventManager.deregisterEventBusSubscriber(this.axleManager);
     }
 
     //////////////

@@ -8,4 +8,5 @@ export interface IWindData {
     windState: string;
     windStateTimer: number;
     windmills: PartialRecord<IslandId, Reference<ReferenceType.Doodad>[]>;
+    axles: PartialRecord<IslandId, Reference<ReferenceType.Doodad>[]>;
 }
