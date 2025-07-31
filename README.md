@@ -4,7 +4,7 @@
 ## Overview
 Wind and Power is a mod for the survival game Wayward that introduces a sophisticated, dynamic wind system and renewable energy generation. This project expands the base game's crafting and survival loop by allowing players to harness the power of the wind to produce kinetic energy.
 
-This mod is a testament to my ability to develop complex game systems using C# programming and to create compelling new assets using 3D modeling and texturing. The project demonstrates a holistic approach to mod development, from conceptualizing new mechanics to designing and integrating the assets that bring them to life.
+This mod is a complex game systems using C# programming and to create compelling new assets using modeling and texturing. The project demonstrates a holistic approach to mod development, from conceptualizing new mechanics to designing and integrating the assets that bring them to life.
 
 ## Features
 Wind and Power adds several new systems and items to the game, all working together to create a cohesive energy production pipeline:
